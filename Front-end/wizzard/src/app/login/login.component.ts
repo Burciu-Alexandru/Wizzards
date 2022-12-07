@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
+import { AuthServiceService } from './auth/auth-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,9 +8,16 @@ import { MatSliderModule } from '@angular/material/slider';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(private auth : AuthServiceService) { 
+
+  }
 
   ngOnInit(): void {
+  }
+  login(){
+   this.auth.login().subscribe(response=>console.log(response))
   }
 
 }
