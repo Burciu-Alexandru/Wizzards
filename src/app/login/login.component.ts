@@ -19,5 +19,9 @@ export class LoginComponent implements OnInit {
   login(){
    this.auth.login().subscribe(response=>console.log(response))
   }
+  loginWithPhone(){
+    //this.auth.loginPhone();
+    this.auth.test();
+  }
 
 }

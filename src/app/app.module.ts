@@ -9,6 +9,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule} from '@angular/common/http';
+import { AngularFireModule} from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     MatInputModule,MatCardModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
