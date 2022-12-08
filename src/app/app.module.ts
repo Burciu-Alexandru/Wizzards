@@ -18,6 +18,10 @@ import { HomeComponent } from './home/home.component';
 import { ContentComponent } from './home/content/content.component';
 import { LocationComponent } from './home/content/location/location.component';
 import { AppointmentComponent } from './home/content/appointment/appointment.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DoAppointmentComponent } from './home/content/location/do-appointment/do-appointment.component';
+import {MatRadioModule} from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +31,7 @@ import { AppointmentComponent } from './home/content/appointment/appointment.com
     ContentComponent,
     LocationComponent,
     AppointmentComponent,
+    DoAppointmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,9 @@ import { AppointmentComponent } from './home/content/appointment/appointment.com
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    MatDialogModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

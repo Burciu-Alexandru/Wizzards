@@ -11,6 +11,7 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
     background-color: whitesmoke;
+    margin-top: 65px;
     cursor: pointer;
     transition: all 1s ease;
     .photo-container{
@@ -55,12 +56,15 @@
 
 .main:hover {
     box-shadow: rgba(0, 0, 0, 0.74) 0px 3px 8px;
+    background-color:  rgb(255, 108, 55);
     
 }
 .main:hover #details{
   
     opacity: 100;
+    color: black;
 }
 .main:hover img:not(.main:hover){
     filter: blur(3px);
+    
 }

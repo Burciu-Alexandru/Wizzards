@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DoAppointmentComponent } from './do-appointment/do-appointment.component';
 
 @Component({
   selector: 'app-location',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+
+  }
+  openDialog(){
+    this.dialog.open(DoAppointmentComponent);
   }
 
 }
