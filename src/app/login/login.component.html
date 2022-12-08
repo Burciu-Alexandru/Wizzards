@@ -1,21 +1,20 @@
 <div class="main">
    
     
-    <form class="login-form">
+    <form class="login-form" [formGroup]="userForm">
         <h1>Login</h1>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Email</mat-label>
-          <input type="email" matInput 
+          <input type="email" matInput formControlName="email"
                  placeholder="Ex. pat@example.com">
           <mat-hint>Errors appear instantly!</mat-hint>
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Password</mat-label>
-            <input type="password" matInput 
+            <input type="password" matInput formControlName="password"
                    placeholder="Password">
           </mat-form-field>
           <button mat-raised-button color="primary" type="button" (click)="login()">Login</button>
-          <button mat-raised-button color="primary" type="button" (click)="login()">Login with phone</button>
           <button mat-raised-button color="warn" routerLink="/register" >Register</button>
       </form>
     </div>
