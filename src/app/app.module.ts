@@ -16,6 +16,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ContentComponent } from './home/content/content.component';
+import { LocationComponent } from './home/content/location/location.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { ContentComponent } from './home/content/content.component';
     RegisterComponent,
     HomeComponent,
     ContentComponent,
+    LocationComponent,
   ],
   imports: [
     BrowserModule,
