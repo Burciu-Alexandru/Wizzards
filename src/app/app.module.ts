@@ -10,7 +10,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule} from '@angular/common/http';
 import { AngularFireModule} from '@angular/fire/compat';
-import { environment } from 'src/environments/environment';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,9 @@ import { environment } from 'src/environments/environment';
     MatInputModule,MatCardModule,
     MatButtonModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]
