@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./do-appointment.component.scss']
 })
 export class DoAppointmentComponent implements OnInit {
-
+  selected !: Date;
   constructor() { }
 
   ngOnInit(): void {

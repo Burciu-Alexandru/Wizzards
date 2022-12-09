@@ -13,7 +13,7 @@ import { AngularFireModule} from '@angular/fire/compat';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ContentComponent } from './home/content/content.component';
 import { LocationComponent } from './home/content/location/location.component';
@@ -21,6 +21,9 @@ import { AppointmentComponent } from './home/content/appointment/appointment.com
 import {MatDialogModule} from '@angular/material/dialog';
 import { DoAppointmentComponent } from './home/content/location/do-appointment/do-appointment.component';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -41,11 +44,16 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatNativeDateModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
