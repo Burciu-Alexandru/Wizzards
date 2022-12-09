@@ -1,7 +1,7 @@
 <div class="main">
     <div class="list-container"> 
         
-         <app-location *ngFor="let location of list"></app-location> 
+         <app-location *ngFor="let location of locationList" [locationmodel]=location></app-location> 
      
     </div>
     <div class="appointments-container">

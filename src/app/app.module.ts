@@ -24,6 +24,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
+import { FooterComponent } from './home/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     LocationComponent,
     AppointmentComponent,
     DoAppointmentComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatRadioModule,
     MatFormFieldModule,
     FormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconModule
    
   ],
   providers: [],
