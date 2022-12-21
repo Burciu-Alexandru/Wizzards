@@ -1,0 +1,18 @@
+<div class="main">
+    <h1>Los Banditos</h1>
+    <div class="details-container">
+        <div class="photo-container"><img src="https://scontent-otp1-1.xx.fbcdn.net/v/t1.6435-9/65955451_1399814680176268_1169647073625112576_n.png?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=rB8OjFKq9rgAX9rLFNG&_nc_ht=scontent-otp1-1.xx&oh=00_AfAEHuRN9W3SqS_a01-X7xtj-5HWRG81eVEc_46lbKtahw&oe=63B9C10E" alt=""></div>
+        <div class="services-container">
+            <mat-card class="demo-inline-calendar-card">
+                <mat-calendar [(selected)]="selected"></mat-calendar>
+              </mat-card>
+              <p>Selected date: {{selected}}</p>
+        </div>
+       <div class="buttons-container">
+        <button mat-raised-button color="primary" type="button"> Programeaza</button>
+        <button mat-raised-button color="warn" type="button"> Anuleaza</button>
+       </div>
+
+    </div>
+
+</div>

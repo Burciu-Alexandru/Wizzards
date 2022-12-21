@@ -1,0 +1,37 @@
+
+.main{
+    width: 75vw;
+    height: 90vh;
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+  h1{
+  
+  }
+  .details-container{
+    width: 95%;
+    height: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    .photo-container{
+        width: 450px;
+        height: 650px;
+        img{
+            height: 100%;
+            width: 100%;
+        }
+
+    }
+    .services-container{
+        width: 500px;
+        height: 650px;
+        background-color: rgb(235, 235, 235);
+        border-radius: 10px;
+        
+    }
+    button{
+        max-height: 50px;
+        margin:5px;
+    }
+  }
+}

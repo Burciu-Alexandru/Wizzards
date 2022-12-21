@@ -6,6 +6,7 @@ import { getAuth } from "firebase/auth";
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import  { loginModel }  from '../login.model';
 import { from } from 'rxjs';
+import { registerModel } from 'src/app/register/register.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,8 +22,8 @@ export class AuthServiceService {
    login(user : loginModel):Observable<any>{
     return  from(this.auth.signInWithEmailAndPassword("dragos.boboluta@yahoo.com","Parola123456@").then(()=>{localStorage.setItem("token","true")},err => console.log(err)));
    }
-   register(){
-
+   register(user: registerModel):Observable<any>{
+    return from(this.auth.createUserWithEmailAndPassword("dragosb24.boboluta@yahoo.com","Parola123456@"));
    }
    loginPhone(){
     const auth = getAuth();

@@ -1,0 +1,11 @@
+<div class="main" (click)="openDialog()">
+    <div class="photo-container"> <img [src]="locationmodel.url" [alt]="locationmodel.name"></div>
+    <div class="details">
+        <!-- link it later to a detail page with location id  -->
+        <h2 id="location-name"> {{locationmodel.name}} </h2>
+        <h3 id="details">Programeaza-te </h3>
+        <h4 id="rating">
+        <ng-container *ngFor="let _ of [].constructor(locationmodel.rating)"> ⭐ </ng-container>
+    </h4>
+    </div>
+</div>

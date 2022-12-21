@@ -1,0 +1,41 @@
+.main{
+    width: 98%;
+    height: 98%;
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 7px;
+    
+    .list-container{
+        height: 80%;
+        width: 100%;
+       
+        overflow-y: scroll;
+        display: flex;
+        flex-flow: wrap;
+        gap: 70px;
+        justify-content: space-evenly;
+        padding-top:20px ;
+        padding-bottom: 20px;
+        .box:nth-child(4n){background-color: gray;
+        }
+        .box{
+            background-color: red;
+            height: 350px;
+            width: 180px;
+         min-width: 20%;
+         border: 3px solid black;}
+    }
+    
+    .appointments-container{
+        height: 20%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        overflow-x: scroll;
+       
+    }
+}
