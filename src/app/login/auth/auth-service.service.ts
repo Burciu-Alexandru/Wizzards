@@ -14,14 +14,17 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class AuthServiceService {
 
   user !: loginModel ;  
-  tokenId !: string | null;
+  tokenId !: string;
   constructor(private http:HttpClient,private auth : AngularFireAuth,private firestore: AngularFirestore) {
     
 
    }
 
    login(user : loginModel):Observable<any>{
-    return  from(this.auth.signInWithEmailAndPassword("dragos.boboluta@yahoo.com","Parola123456@"))
+    return  from(this.auth.signInWithEmailAndPassword(user.email,user.password)).pipe(map(response=>{
+      this.tokenId=response.user?.uid  as string;
+      localStorage.setItem("id",this.tokenId);
+    }))
   }
    register(user: registerModel):Observable<any>{
     return from(this.auth.createUserWithEmailAndPassword(user.email,user.password)).pipe(map(response=>{
@@ -32,7 +35,8 @@ export class AuthServiceService {
         email : user.email,
         numarTelefon : user.phone,
       });
-      console.log(response.user?.uid);
+      this.tokenId = response.user?.uid as string;
+      localStorage.setItem("id",this.tokenId);
     }) );
    }
    loginPhone(){
@@ -46,7 +50,7 @@ export class AuthServiceService {
    }
    logout(){
     this.auth.signOut();
-
+    localStorage.clear();
    }
    
 }
