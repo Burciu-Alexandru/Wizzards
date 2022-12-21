@@ -27,6 +27,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './home/footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProfileComponent } from './profile/profile.component';
     DoAppointmentComponent,
     FooterComponent,
     ProfileComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
