@@ -1,7 +1,7 @@
 
 
 interface loginModel {
-    email : string | null ,
-    password : string | null , 
+    email : string ,
+    password : string , 
 }
 export  {loginModel};

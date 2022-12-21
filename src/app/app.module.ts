@@ -26,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './home/footer/footer.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FooterComponent } from './home/footer/footer.component';
     AppointmentComponent,
     DoAppointmentComponent,
     FooterComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
