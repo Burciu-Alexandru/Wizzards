@@ -10,21 +10,22 @@ import { registerModel } from './register.model';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  user : registerModel = {
-    email: '',
-    password: ''
-  }
+  
   userFormRegister : FormGroup = this.fb.group({
+    firstName: [''],
+    lastName: [''],
     email : [''],
     password : [''],
-    passwordConfirmed : ['']
+    passwordConfirmed : [''],
+    phone : ['']
   }) ;
   constructor(private auth : AuthServiceService,private fb: FormBuilder , private router : Router) { }
 
   ngOnInit(): void {
   }
   register(){
-    this.auth.register(this.user).subscribe({complete:()=>{  console.log("user registered"); this.router.navigateByUrl('/login')},error:(err)=>console.log(err)});
+
+    this.auth.register(this.userFormRegister.value as registerModel).subscribe({complete:()=>{  console.log("user registered"); this.router.navigateByUrl('/login')},error:(err)=>console.log(err)});
     
   }
 }
