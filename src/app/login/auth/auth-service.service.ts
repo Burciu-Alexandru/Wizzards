@@ -61,6 +61,7 @@ export class AuthServiceService {
         return actions.map(a => {
           //const data = a.payload.doc.data() as Shirt;
           const id = a.payload.doc.id;
+          this.tokenId = id;
           if(id==uid) 
          { user = a.payload.doc.data() as registerModel;
           if(user.admin==true)
@@ -69,7 +70,10 @@ export class AuthServiceService {
         });
       })).subscribe({next:()=>{if(isAdmin==true){
         this.router.navigateByUrl('/admin');
-      }}});
+      }
+    else{
+      this.router.navigate(["home",this.tokenId]);
+    }}});
      // return true;
    }
    
