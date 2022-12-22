@@ -9,6 +9,7 @@ import { from } from 'rxjs';
 import { registerModel } from 'src/app/register/register.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { userModel } from './user.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +26,11 @@ export class AuthServiceService {
     return  from(this.auth.signInWithEmailAndPassword(user.email,user.password)).pipe(map(response=>{
       this.tokenId=response.user?.uid  as string;
       localStorage.setItem("id",this.tokenId);
-    }))
+      //var isAdmin = this.isAdmin(this.tokenId);
+      var userCurrent = this.firestore.collection("users",ref=>ref.where("id","==",this.tokenId)).valueChanges();
+      userCurrent.subscribe(item=>{var x = item[0] as userModel; if(x.admin==true){console.log("este admin : ",x.nume)}else {console.log("nu este admin ",x.nume)};
+      })
+    })) 
   }
    register(user: registerModel):Observable<any>{
     return from(this.auth.createUserWithEmailAndPassword(user.email,user.password)).pipe(map(response=>{
@@ -35,7 +40,8 @@ export class AuthServiceService {
         prenume : user.lastName,
         email : user.email,
         numarTelefon : user.phone,
-        admin : user.admin
+        admin : user.admin ,
+        id : response.user?.uid as string
       });
       this.tokenId = response.user?.uid as string;
       localStorage.setItem("id",this.tokenId);
@@ -56,25 +62,8 @@ export class AuthServiceService {
    isAdmin(uid :string){
       var isAdmin = false;
       var user: registerModel ; 
-      this.firestore.collection("users").stateChanges().pipe(map(actions => {
-        return actions.map(a => {
-          //const data = a.payload.doc.data() as Shirt;
-          const id = a.payload.doc.id;
-          
-          if(id==uid) 
-         { user = a.payload.doc.data() as registerModel;
-          this.tokenId = id;
-          
-          if(user.admin==true)
-            isAdmin= true;
-         }
-        });
-      })).subscribe({next:()=>{if(isAdmin==true){
-        this.router.navigateByUrl('/admin');
-      }
-    else{
-      this.router.navigate(["home",this.tokenId]);
-    }}});
+      console.log(uid);
+      //.subscribe();
      // return true;
    }
    

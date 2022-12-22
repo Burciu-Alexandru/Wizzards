@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { AuthServiceService } from './auth/auth-service.service';
 import { loginModel } from './login.model';
@@ -10,7 +10,7 @@ import { map, Observable, Subject, takeUntil } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit , OnDestroy{
 
   userForm : FormGroup = this.fb.group({
     email : [''],
@@ -20,17 +20,16 @@ export class LoginComponent implements OnInit {
   constructor(private auth : AuthServiceService,private fb: FormBuilder , private router : Router) { 
 
   }
+  ngOnDestroy(): void {
+    this.loginSub.unsubscribe();
+  }
 
   ngOnInit(): void {
   }
   login(){
   
     console.log("hello");
-    this.auth.login(this.userForm.value as loginModel).pipe(map(()=>{ takeUntil(this.loginSub)})).subscribe( () =>
-    {
-      let isAdmin =  this.auth.isAdmin(this.auth.tokenId as string); 
-      
-    }    );
+    this.auth.login(this.userForm.value as loginModel).subscribe( );
     
 
   }
