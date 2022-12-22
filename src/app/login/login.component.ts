@@ -23,13 +23,12 @@ export class LoginComponent implements OnInit {
   }
   login(){
   
-
-    this.auth.login(this.userForm.value as loginModel).subscribe(
-      {
-        complete:()=>this.router.navigateByUrl("/home"),
-        error:(err)=>console.log(err)
-      }
-    );
+    
+    this.auth.login(this.userForm.value as loginModel).subscribe( () =>
+{
+  let isAdmin =  this.auth.isAdmin(this.auth.tokenId as string); 
+  
+}    );
     
 
   }

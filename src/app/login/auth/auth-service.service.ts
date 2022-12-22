@@ -8,6 +8,7 @@ import  { loginModel }  from '../login.model';
 import { from } from 'rxjs';
 import { registerModel } from 'src/app/register/register.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class AuthServiceService {
 
   user !: loginModel ;  
   tokenId !: string;
-  constructor(private http:HttpClient,private auth : AngularFireAuth,private firestore: AngularFirestore) {
+  constructor(private http:HttpClient,private auth : AngularFireAuth,private firestore: AngularFirestore,private router : Router) {
     
 
    }
@@ -34,6 +35,7 @@ export class AuthServiceService {
         prenume : user.lastName,
         email : user.email,
         numarTelefon : user.phone,
+        admin : user.admin
       });
       this.tokenId = response.user?.uid as string;
       localStorage.setItem("id",this.tokenId);
@@ -51,6 +53,24 @@ export class AuthServiceService {
    logout(){
     this.auth.signOut();
     localStorage.clear();
+   }
+   isAdmin(uid :string){
+      var isAdmin = false;
+      var user: registerModel ; 
+      this.firestore.collection("users").stateChanges().pipe(map(actions => {
+        return actions.map(a => {
+          //const data = a.payload.doc.data() as Shirt;
+          const id = a.payload.doc.id;
+          if(id==uid) 
+         { user = a.payload.doc.data() as registerModel;
+          if(user.admin==true)
+            isAdmin= true;
+         }
+        });
+      })).subscribe({next:()=>{if(isAdmin==true){
+        this.router.navigateByUrl('/admin');
+      }}});
+     // return true;
    }
    
 }
