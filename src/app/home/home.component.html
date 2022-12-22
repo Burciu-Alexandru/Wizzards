@@ -1,14 +1,28 @@
 <div class="main-container">
-    <div class="nav-bar-container"> 
-        <div class="detail-container">
-        <div class="photo-container"> <img [routerLink]="['/profile-settings']" id="profile-img"src="https://i.postimg.cc/26t6Qp9q/dummy-prod-1.jpg" alt="img"></div>
-        <h2 id="details">Hello Dragos</h2> 
-        <!-- route this to a page of acc settings  -->
+    
+    <div class="left-container">
+        <div class="top-container">
+            <img src="https://svgshare.com/i/ozu.svg" alt="avatar">
+            <div class="name">Admin</div>
         </div>
-        <div class="logout-container"> <button mat-raised-button color="primary" type="button" (click)="logout()" >Logout</button></div>    
+        <div class="menu-container">
+          <div class="menu">
+            Menu
+          </div>
+          <div class="options ">
+            <div class="settings-container option">
+                Settings
+            </div>
+            <div class="appointment-container option">
+                Appointments
+            </div>
+            <div class="logout-cointainer option">
+                Logout
+            </div>
+          </div>
+        </div>
     </div>
-    <div class="content-container"> <app-content></app-content>  </div>
-    <div class="footer-container">
-        <app-footer></app-footer>
+    <div class="right-container">
+        
     </div>
 </div>

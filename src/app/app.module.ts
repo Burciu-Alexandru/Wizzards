@@ -18,17 +18,18 @@ import { HomeComponent } from './home/home.component';
 import { ContentComponent } from './home/content/content.component';
 import { LocationComponent } from './home/content/location/location.component';
 import { AppointmentComponent } from './home/content/appointment/appointment.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule} from '@angular/material/dialog';
 import { DoAppointmentComponent } from './home/content/location/do-appointment/do-appointment.component';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatRadioModule} from '@angular/material/radio';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './home/footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
-
+import { MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,8 +61,9 @@ import { AdminComponent } from './admin/admin.component';
     MatFormFieldModule,
     FormsModule,
     MatNativeDateModule,
-    MatIconModule
-   
+    MatIconModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

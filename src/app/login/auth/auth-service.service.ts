@@ -17,6 +17,8 @@ export class AuthServiceService {
 
   user !: loginModel ;  
   tokenId !: string;
+  //isAdmin :boolean = false;
+
   constructor(private http:HttpClient,private auth : AngularFireAuth,private firestore: AngularFirestore,private router : Router) {
     
 
@@ -27,9 +29,10 @@ export class AuthServiceService {
       this.tokenId=response.user?.uid  as string;
       localStorage.setItem("id",this.tokenId);
       //var isAdmin = this.isAdmin(this.tokenId);
-      var userCurrent = this.firestore.collection("users",ref=>ref.where("id","==",this.tokenId)).valueChanges();
-      userCurrent.subscribe(item=>{var x = item[0] as userModel; if(x.admin==true){console.log("este admin : ",x.nume)}else {console.log("nu este admin ",x.nume)};
-      })
+      return this.tokenId;
+      
+      
+     
     })) 
   }
    register(user: registerModel):Observable<any>{
@@ -56,15 +59,16 @@ export class AuthServiceService {
    return token;
    }
    logout(){
-    this.auth.signOut().then(()=>{this.router.navigateByUrl("login"); localStorage.clear();});
+     localStorage.clear();
+
    
    }
-   isAdmin(uid :string){
-      var isAdmin = false;
-      var user: registerModel ; 
-      console.log(uid);
-      //.subscribe();
-     // return true;
-   }
+  isAdmin(uid : string){
+    
+   
+    
+    
+    return this.firestore.collection("users",ref=>ref.where("id","==",uid)).valueChanges();
+  }
    
 }

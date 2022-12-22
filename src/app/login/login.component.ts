@@ -5,6 +5,7 @@ import { loginModel } from './login.model';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable, Subject, takeUntil } from 'rxjs';
+import { userModel } from './auth/user.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,14 +28,22 @@ export class LoginComponent implements OnInit , OnDestroy{
   ngOnInit(): void {
   }
   login(){
-  
-    console.log("hello");
-    this.auth.login(this.userForm.value as loginModel).subscribe( );
-    
+    var id ="";
+    this.auth.login(this.userForm.value as loginModel).pipe(takeUntil(this.loginSub)).subscribe({next:response=>{var isAdmin = this.auth.isAdmin(response).subscribe(response=>{
+      var item = response[0] as userModel;
+      if(item.admin==true){
+        //console.log("is admin");
+        this.router.navigate(["admin"])
+      }else{
+        this.router.navigate(['home/l0bW9TQ2pkRIOWIuKCuQuutLeY23'])
+        //console.log("is not admin");
+      }
+    }) } });
+    //var isAdmin = this.auth.isAdmin;
+   // console.log(isAdmin);
 
   }
   logout(){
-    this.loginSub.complete();
     this.auth.logout();
   }
 }

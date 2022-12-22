@@ -7,15 +7,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,.09);
-    
+    background-color: white;
+
+    background-image: url("https://svgshare.com/i/p0M.svg");
+    background-repeat: no-repeat;
+    background-size:contain;
     .login-form{
         min-width: 300px;
         h1{
             color: #3f51b5;
             font-weight:800;
         }
-        background-color: white;
+    background-color: rgba(0,0,0,.09);
+
         display: flex;
         flex-direction: column;
         width: 20%;
