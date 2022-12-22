@@ -12,11 +12,9 @@ export class LocationComponent implements OnInit {
   @Input() locationmodel!: locationModel;
   
   constructor(public dialog: MatDialog) { 
-    console.log(this.locationmodel);
   }
 
   ngOnInit(): void {
-    console.log(this.locationmodel);
   }
   openDialog(){
     this.dialog.open(DoAppointmentComponent);

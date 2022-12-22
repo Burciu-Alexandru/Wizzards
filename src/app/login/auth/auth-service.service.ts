@@ -44,15 +44,14 @@ export class AuthServiceService {
    loginPhone(){
     const auth = getAuth();
     auth.languageCode = 'it';
-    console.log(auth);
    }
    token() :Observable<any>{
    var token = this.auth.idToken ; 
    return token;
    }
    logout(){
-    this.auth.signOut();
-    localStorage.clear();
+    this.auth.signOut().then(()=>{this.router.navigateByUrl("login"); localStorage.clear();});
+   
    }
    isAdmin(uid :string){
       var isAdmin = false;
@@ -61,9 +60,11 @@ export class AuthServiceService {
         return actions.map(a => {
           //const data = a.payload.doc.data() as Shirt;
           const id = a.payload.doc.id;
-          this.tokenId = id;
+          
           if(id==uid) 
          { user = a.payload.doc.data() as registerModel;
+          this.tokenId = id;
+          
           if(user.admin==true)
             isAdmin= true;
          }
