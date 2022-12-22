@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from '../login/auth/auth-service.service';
 
 @Component({
@@ -9,9 +9,10 @@ import { AuthServiceService } from '../login/auth/auth-service.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth : AuthServiceService,private router : Router) { }
+  constructor(private auth : AuthServiceService,private router : Router , private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(response=>console.log(response));
   }
   logout (): void{
     this.auth.logout();
